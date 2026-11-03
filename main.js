@@ -16,13 +16,20 @@
   $('#current-year').textContent = String(new Date().getFullYear());
 
   const socialLinks = [];
-  if (/^https:\/\/www\.instagram\.com\/[\w.]+\/?(?:\?.*)?$/.test(data.site.instagramUrl)) {
-    socialLinks.push(`<a class="social-btn" href="${esc(data.site.instagramUrl)}" target="_blank" rel="noopener noreferrer">Instagram ↗</a>`);
-  }
+  const instagramPattern = /^https:\/\/(?:www\.)?instagram\.com\/[A-Za-z0-9_.]+\/?$/;
+  const linkedinPattern = /^https:\/\/(?:www\.)?linkedin\.com\/in\/[A-Za-z0-9_-]+\/?$/;
+  const addSocial = (url, pattern, label, secondary = false) => {
+    if (typeof url === 'string' && pattern.test(url)) {
+      socialLinks.push(`<a class="social-btn${secondary ? ' social-secondary' : ''}" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${label} ↗</a>`);
+    }
+  };
+  addSocial(data.site.instagramPersonalUrl, instagramPattern, '個人 Instagram');
+  addSocial(data.site.instagramCreativeUrl, instagramPattern, '知微創作 Instagram');
+  addSocial(data.site.linkedinUrl, linkedinPattern, 'LinkedIn', true);
   if (data.site.email && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.site.email)) {
     socialLinks.push(`<a class="social-btn social-secondary" href="mailto:${encodeURIComponent(data.site.email)}">合作聯絡信箱 ↗</a>`);
   }
-  $('#social-area').innerHTML = socialLinks.length ? socialLinks.join('') : '<p class="social-pending">Instagram 與合作聯絡方式尚待設定。</p>';
+  $('#social-area').innerHTML = socialLinks.length ? socialLinks.join('') : '<p class="social-pending">社群與合作聯絡方式尚待設定。</p>';
 
   $('#category-grid').innerHTML = categories.map(c => `
     <a class="category-card" href="#journal/${encodeURIComponent(c.id)}">

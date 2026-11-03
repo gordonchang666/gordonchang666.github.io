@@ -31,7 +31,7 @@
 <div class="grid"><div class="group"><label for="site-title">網站名稱</label><input id="site-title"></div><div class="group"><label for="site-subtitle">副標題</label><input id="site-subtitle"></div></div>
 <div class="group"><label for="site-heroDescription">首頁一句話介紹</label><textarea id="site-heroDescription"></textarea></div>
 <div class="group"><label for="site-about">關於我（首頁摘要）</label><textarea id="site-about"></textarea></div>
-<div class="grid"><div class="group"><label for="site-instagramUrl">Instagram 完整網址</label><input id="site-instagramUrl" type="url" placeholder="https://www.instagram.com/你的帳號/"></div><div class="group"><label for="site-email">公開合作信箱（選填）</label><input id="site-email" type="email" placeholder="留空就不顯示"></div></div>
+<div class="grid"><div class="group"><label for="site-instagramPersonalUrl">個人 Instagram 完整網址</label><input id="site-instagramPersonalUrl" type="url" placeholder="https://www.instagram.com/個人帳號/"></div><div class="group"><label for="site-instagramCreativeUrl">知微創作 Instagram 完整網址</label><input id="site-instagramCreativeUrl" type="url" placeholder="https://www.instagram.com/創作帳號/"></div><div class="group"><label for="site-linkedinUrl">LinkedIn 公開個人檔案網址</label><input id="site-linkedinUrl" type="url" placeholder="https://www.linkedin.com/in/個人網址/"></div><div class="group"><label for="site-email">公開合作信箱（選填）</label><input id="site-email" type="email" placeholder="留空就不顯示"></div></div>
 </section>
 <section class="pane"><span class="flag">02 · JOURNAL</span><h2>編輯文章</h2>
 <div class="group"><label for="post-select">選擇要編輯的文章</label><select id="post-select"></select></div>
@@ -52,7 +52,7 @@
 <script>
 (() => {
  const data=JSON.parse(JSON.stringify(window.GORDON_SITE));
- const ids=['title','subtitle','heroDescription','about','instagramUrl','email'];
+ const ids=['title','subtitle','heroDescription','about','instagramPersonalUrl','instagramCreativeUrl','linkedinUrl','email'];
  const postKeys=['slug','category','title','subtitle','date','author','excerpt','coverImage','coverCaption','footnote'];
  const $=id=>document.getElementById(id);
  let active=0, isLoading=false;
@@ -93,7 +93,11 @@
   saveCurrent();ids.forEach(k=>data.site[k]=$('site-'+k).value);
   if(data.posts.some(p=>!p.slug || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(p.slug))){status('有文章的英文網址代號不符合格式，請使用小寫英文、數字與連字號。');return}
   if(new Set(data.posts.map(p=>p.slug)).size!==data.posts.length){status('有重複的英文網址代號，請修正後再下載。');return}
-  if(data.site.instagramUrl && !/^https:\/\/(?:www\.)?instagram\.com\/[\w.]+\/?(?:\?.*)?$/.test(data.site.instagramUrl)){status('Instagram 網址格式不正確，請輸入完整 instagram.com 帳號連結。');return}
+  const instagramPattern=/^https:\/\/(?:www\.)?instagram\.com\/[A-Za-z0-9_.]+\/?$/;
+  for(const k of ['instagramPersonalUrl','instagramCreativeUrl']){
+    if(data.site[k] && !instagramPattern.test(data.site[k])){status('Instagram 網址格式不正確，請輸入完整 instagram.com 帳號連結。');return}
+  }
+  if(data.site.linkedinUrl && !/^https:\/\/(?:www\.)?linkedin\.com\/in\/[A-Za-z0-9_-]+\/?$/.test(data.site.linkedinUrl)){status('LinkedIn 網址格式不正確，請輸入公開個人檔案網址。');return}
   const result='/* 使用章竣 Gordon 個人網站編輯器建立；可以繼續手動編輯 */\nwindow.GORDON_SITE = '+JSON.stringify(data,null,2)+';\n';
   const blob=new Blob([result],{type:'text/javascript;charset=utf-8'}),url=URL.createObjectURL(blob);
   const a=document.createElement('a');a.href=url;a.download='site-content.js';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1200);

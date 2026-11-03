@@ -12,8 +12,10 @@ window.GORDON_SITE = {
     subtitle: '法律・文字・生活',
     heroDescription: '我是章竣，Gordon。法律是我理解世界的方法之一；電影、音樂、閱讀與寫作，則陪我練習感受和思考生活。',
     about: '目前就讀東吳大學法律學系，關注科技法、人工智慧及法律與社會的關係。除了課堂與實務學習，也喜歡閱讀、古典音樂、看展覽、觀賞電影，以及透過文字整理感受與思考。',
-    instagramUrl: '',  // 在兩個單引號中貼上你的 IG 完整網址，例如 https://www.instagram.com/你的帳號/
-    email: ''          // 選填：只填「願意公開給所有網站訪客」的合作聯絡信箱；空白就不顯示。
+    instagramPersonalUrl: 'https://www.instagram.com/tanzenundjun555/', // 個人 IG
+    instagramCreativeUrl: 'https://www.instagram.com/rauterdavid566/', // 知微創作 IG
+    linkedinUrl: 'https://www.linkedin.com/in/jun-chang-694166235/', // LinkedIn
+    email: 'cjun095712@gmail.com' // 公開合作聯絡信箱
   },
   categories: [
     {id: 'film', number: '01', en: 'FILM NOTES', name: '電影心得', description: '看完電影，繼續思考那些沒有標準答案的事。'},
