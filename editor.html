@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>內容編輯器｜章竣 Gordon 個人網站</title>
+  <style>
+    :root{--ink:#253b34;--soft:#faf8f4;--line:#dad7cd;--muted:#67756f;--accent:#a15f48}*{box-sizing:border-box}
+    body{margin:0;background:var(--soft);color:var(--ink);font:15px/1.7 "PingFang TC","Microsoft JhengHei",sans-serif}
+    .wrap{max-width:1080px;margin:auto;padding:30px 23px 100px}header{border-bottom:1px solid var(--line);margin-bottom:28px}
+    h1{font-family:"Noto Serif TC","Songti TC",serif;font-size:clamp(28px,4vw,43px);margin:5px 0 10px}
+    h2{font-size:21px;margin:6px 0 18px}h3{font-size:17px;margin:28px 0 12px}.small{font-size:12px;color:var(--muted)}p{margin:8px 0 17px}
+    .flag{font-size:12px;letter-spacing:.16em;color:var(--accent);font-weight:700}.pane{padding:26px;background:white;border:1px solid var(--line);margin-bottom:20px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.group{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+    label{font-size:13px;font-weight:700}input,textarea,select{border:1px solid #bdc5bf;padding:10px 12px;border-radius:3px;width:100%;font:inherit;background:#fff;color:var(--ink)}
+    textarea{resize:vertical;min-height:85px}#post-paragraphs{min-height:340px;line-height:1.8;font-size:14px}
+    input:focus,textarea:focus,select:focus{outline:2px solid #a4bbb0;outline-offset:1px}
+    .actions{display:flex;gap:11px;flex-wrap:wrap;margin:19px 0}
+    button,.button{background:var(--ink);color:white;cursor:pointer;border:1px solid var(--ink);padding:11px 17px;font:inherit;font-size:13px;border-radius:2px;text-decoration:none}
+    button.secondary{background:white;color:var(--ink)}button:hover{opacity:.85}.hint{background:#f0f3ed;padding:14px 18px;font-size:13px;border-left:3px solid #779486}
+    code{font:12px ui-monospace,monospace;background:#f0f3ed;padding:1px 5px}
+    #status{color:#43735c;font-size:13px;min-height:25px}
+    @media(max-width:650px){.grid{grid-template-columns:1fr}.pane{padding:18px}.wrap{padding-inline:15px}}
+  </style>
+  <script src="site-content.js"></script>
+</head>
+<body>
+<header><div class="wrap"><span class="flag">GORDON · CONTENT EDITOR</span><h1>內容編輯器</h1><p>不必碰 HTML 程式碼，也能修改網站介紹與文章。完成後下載新版內容檔案，再上傳到 GitHub。</p><p class="small">本頁只會在你的瀏覽器裡操作資料，不會自動儲存到網路，也不會修改 GitHub。建議每次編輯前先備份原始網站。</p></div></header>
+<main class="wrap">
+<section class="pane"><span class="flag">01 · ABOUT THE SITE</span><h2>網站基本資料</h2>
+<div class="grid"><div class="group"><label for="site-title">網站名稱</label><input id="site-title"></div><div class="group"><label for="site-subtitle">副標題</label><input id="site-subtitle"></div></div>
+<div class="group"><label for="site-heroDescription">首頁一句話介紹</label><textarea id="site-heroDescription"></textarea></div>
+<div class="group"><label for="site-about">關於我（首頁摘要）</label><textarea id="site-about"></textarea></div>
+<div class="grid"><div class="group"><label for="site-instagramUrl">Instagram 完整網址</label><input id="site-instagramUrl" type="url" placeholder="https://www.instagram.com/你的帳號/"></div><div class="group"><label for="site-email">公開合作信箱（選填）</label><input id="site-email" type="email" placeholder="留空就不顯示"></div></div>
+</section>
+<section class="pane"><span class="flag">02 · JOURNAL</span><h2>編輯文章</h2>
+<div class="group"><label for="post-select">選擇要編輯的文章</label><select id="post-select"></select></div>
+<div class="actions"><button id="new-post" type="button" class="secondary">＋ 新增一篇文章</button><button id="remove-post" type="button" class="secondary">刪除目前文章</button></div>
+<div class="grid"><div class="group"><label for="post-title">文章標題</label><input id="post-title"></div><div class="group"><label for="post-subtitle">副標題</label><input id="post-subtitle"></div>
+<div class="group"><label for="post-date">發表日期（可用 2026.11.3）</label><input id="post-date"></div><div class="group"><label for="post-category">文章分類</label><select id="post-category"><option value="about">認識我</option><option value="film">電影心得</option><option value="zhiwei">知微創作</option><option value="life">生活紀錄</option></select></div>
+<div class="group"><label for="post-slug">英文網址代號（不重複）</label><input id="post-slug" placeholder="my-new-post"></div><div class="group"><label for="post-author">作者署名</label><input id="post-author"></div></div>
+<div class="group"><label for="post-excerpt">文章摘要（出現在列表）</label><textarea id="post-excerpt"></textarea></div>
+<div class="group"><label for="post-paragraphs">文章正文：不同段落之間空一行</label><textarea id="post-paragraphs" placeholder="第一段文字。\n\n第二段文字。"></textarea><span class="small">直接貼上完整繁體中文文章即可。編輯器會依空白行分成段落，不會擅自修改文字。</span></div>
+<div class="grid"><div class="group"><label for="post-coverImage">封面圖片檔案路徑（選填）</label><input id="post-coverImage" placeholder="assets/maji.jpg"></div><div class="group"><label for="post-coverCaption">照片說明</label><input id="post-coverCaption"></div></div>
+<div class="group"><label for="post-footnote">文章註記（選填）</label><textarea id="post-footnote"></textarea></div>
+<div class="actions"><button id="save-post" type="button">儲存目前這篇的修改（僅此頁）</button><button id="download" type="button">下載新版 site-content.js</button></div>
+<p id="status" role="status" aria-live="polite"></p>
+<div class="hint"><strong>發布步驟：</strong>按「下載新版 site-content.js」後，到 GitHub 儲存庫的 <code>site-content.js</code>，選擇上傳檔案取代舊檔，再提交變更。如果你改了封面圖片路徑，記得先把圖片上傳到 <code>assets</code> 資料夾。此頁<strong>不會自動發布</strong>，方便你先審閱。</div>
+</section>
+<div class="actions"><a class="button" href="index.html">↖ 返回網站首頁</a></div>
+</main>
+<script>
+(() => {
+ const data=JSON.parse(JSON.stringify(window.GORDON_SITE));
+ const ids=['title','subtitle','heroDescription','about','instagramUrl','email'];
+ const postKeys=['slug','category','title','subtitle','date','author','excerpt','coverImage','coverCaption','footnote'];
+ const $=id=>document.getElementById(id);
+ let active=0, isLoading=false;
+ const status=t=>{$('status').textContent=t};
+ ids.forEach(k=>{$('site-'+k).value=data.site[k]||''});
+ function saveCurrent(){
+   if(isLoading) return;
+   let p=data.posts[active];if(!p)return;
+   postKeys.forEach(k=>p[k]=$('post-'+k).value);
+   p.paragraphs=$('post-paragraphs').value.trim().split(/\n\s*\n/).map(x=>x.trim()).filter(Boolean);
+ }
+ function loadSelect(){
+   $('post-select').replaceChildren();
+   data.posts.forEach((p,i)=>{let o=document.createElement('option');o.value=String(i);o.textContent=p.title||'（未命名文章）';$('post-select').append(o)});
+   $('post-select').value=String(active);
+ }
+ function loadCurrent(){
+   isLoading=true;
+   const p=data.posts[active];
+   postKeys.forEach(k=>$('post-'+k).value=p?.[k]||'');
+   $('post-paragraphs').value=(p?.paragraphs||[]).join('\n\n');
+   loadSelect();
+   isLoading=false;
+ }
+ $('post-select').addEventListener('change',e=>{saveCurrent();active=Number(e.target.value);loadCurrent();status('已切換文章；先前修改仍保留在此編輯器中。')});
+ $('new-post').addEventListener('click',()=>{
+  saveCurrent();let n=1;const existing=new Set(data.posts.map(p=>p.slug));while(existing.has('new-post-'+n))n++;
+  data.posts.push({slug:'new-post-'+n,category:'life',title:'新文章',subtitle:'',date:'2026.11.3',author:'章竣 Gordon',excerpt:'',coverImage:'',coverCaption:'',paragraphs:['請在這裡輸入文章內容。'],footnote:''});
+  active=data.posts.length-1;loadCurrent();status('已建立新文章草稿，記得下載內容檔才會保存。')
+ });
+ $('remove-post').addEventListener('click',()=>{
+   if(data.posts.length<=1){status('網站至少保留一篇文章。');return}
+   if(!confirm('確定刪除目前文章？這只會修改本次編輯內容，正式發布前還需下載內容檔。'))return;
+   data.posts.splice(active,1);active=Math.max(0,active-1);loadCurrent();status('已從本次編輯資料中移除文章。')
+ });
+ $('save-post').addEventListener('click',()=>{saveCurrent();loadSelect();status('目前文章修改已暫存在本頁。記得按下載，否則關閉頁面後修改會消失。')});
+ $('download').addEventListener('click',()=>{
+  saveCurrent();ids.forEach(k=>data.site[k]=$('site-'+k).value);
+  if(data.posts.some(p=>!p.slug || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(p.slug))){status('有文章的英文網址代號不符合格式，請使用小寫英文、數字與連字號。');return}
+  if(new Set(data.posts.map(p=>p.slug)).size!==data.posts.length){status('有重複的英文網址代號，請修正後再下載。');return}
+  if(data.site.instagramUrl && !/^https:\/\/(?:www\.)?instagram\.com\/[\w.]+\/?(?:\?.*)?$/.test(data.site.instagramUrl)){status('Instagram 網址格式不正確，請輸入完整 instagram.com 帳號連結。');return}
+  const result='/* 使用章竣 Gordon 個人網站編輯器建立；可以繼續手動編輯 */\nwindow.GORDON_SITE = '+JSON.stringify(data,null,2)+';\n';
+  const blob=new Blob([result],{type:'text/javascript;charset=utf-8'}),url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download='site-content.js';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1200);
+  status('已下載新版 site-content.js。請上傳到 GitHub 儲存庫，替換同名檔案後提交。')
+ });
+ loadCurrent();
+})();
+</script>
+</body>
+</html>
