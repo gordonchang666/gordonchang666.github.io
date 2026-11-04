@@ -72,7 +72,7 @@
       return;
     }
     const catName = categoryName(p.category);
-    const cover = p.coverImage ? `<figure class="article-cover"><img src="${esc(p.coverImage)}" alt="${esc(p.title)}的封面照片"><figcaption>${esc(p.coverCaption)}</figcaption></figure>` : (p.category === 'about' ? '' : `<div class="article-cover-pending" role="note"><div class="placeholder-symbol">✦</div><p>封面照片位置</p><small>${esc(p.coverCaption)}</small></div>`);
+    const cover = p.coverImage ? `<figure class="article-cover"><img src="${esc(p.coverImage)}" alt="${esc(p.title)}的封面照片"><figcaption>${esc(p.coverCaption)}</figcaption></figure>` : (p.category === 'about' || !p.coverCaption ? '' : `<div class="article-cover-pending" role="note"><div class="placeholder-symbol">✦</div><p>封面照片位置</p><small>${esc(p.coverCaption)}</small></div>`);
     $('#article-body').innerHTML = `<article class="full-article">
       <div class="article-eyebrow">${esc(catName)} <span>／</span> ${esc(p.date)}</div>
       <h1>${esc(p.title)}</h1><p class="article-subtitle">${esc(p.subtitle)}</p><p class="article-byline">${esc(p.date)}　${esc(p.author)}</p>
