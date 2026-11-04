@@ -31,6 +31,12 @@
   }
   $('#social-area').innerHTML = socialLinks.length ? socialLinks.join('') : '<p class="social-pending">社群與合作聯絡方式尚待設定。</p>';
 
+  // Four category cards fit naturally in a balanced 2×2 desktop layout.
+  if (categories.length === 4) {
+    const gridStyle = document.createElement('style');
+    gridStyle.textContent = '@media (min-width: 721px) {.category-grid {grid-template-columns: repeat(2, minmax(0, 1fr));}}';
+    document.head.appendChild(gridStyle);
+  }
   $('#category-grid').innerHTML = categories.map(c => `
     <a class="category-card" href="#journal/${encodeURIComponent(c.id)}">
       <div class="category-card-top"><span>${esc(c.en)}</span><span>↗</span></div>
@@ -48,7 +54,8 @@
     $('#posts-list').innerHTML = posts.length ? posts.map((p,i) => {
       const catName = categoryName(p.category);
       const image = p.coverImage ? `<img class="post-thumb-image" src="${esc(p.coverImage)}" alt="${esc(p.title)}封面" loading="lazy">` : `<div class="post-thumb-art" aria-hidden="true"><span>✦</span><div></div><small>GORDON'S JOURNAL</small></div>`;
-      return `<article class="post-card ${i===0 ? 'featured-post' : ''}"><a href="#read/${encodeURIComponent(p.slug)}" class="post-card-link">
+      const articleLink = p.externalUrl || `#read/${encodeURIComponent(p.slug)}`;
+      return `<article class="post-card ${i===0 ? 'featured-post' : ''}"><a href="${esc(articleLink)}" class="post-card-link">
         <div class="post-thumb">${image}</div><div class="post-card-text"><div class="post-meta">${esc(catName)} <span>／</span> ${esc(p.date)}</div><h3>${esc(p.title)}</h3><p class="post-subtitle">${esc(p.subtitle)}</p><p class="post-excerpt">${esc(p.excerpt)}</p><span class="read-more">閱讀全文 <span>↗</span></span></div>
       </a></article>`;
     }).join('') : `<div class="empty-state"><span>✳</span><h3>這個專區正在慢慢整理中。</h3><p>這個專區目前正在整理，之後會陸續加入新的文字與作品。</p><a href="#journal/film">先讀電影心得 ↗</a></div>`;
@@ -58,6 +65,10 @@
     const p = data.posts.find(post => post.slug === slug);
     if (!p) {
       $('#article-body').innerHTML = '<h1>找不到這篇文章</h1><p><a href="#journal">回到文章列表</a></p>';
+      return;
+    }
+    if (p.externalUrl) {
+      window.location.replace(p.externalUrl);
       return;
     }
     const catName = categoryName(p.category);

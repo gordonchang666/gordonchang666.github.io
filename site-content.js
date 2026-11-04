@@ -2,8 +2,9 @@
   【網站編輯區】
   這個檔案是你往後主要修改的地方，不用懂 HTML。
   1. site 裡修改自我介紹、IG 連結。
-  2. posts 裡的第一篇是『自我介紹（草稿）』，第二篇是已發表的電影心得。可修改文章或複製新增一篇。
-  3. 每個段落放在 paragraphs 裡的一組引號中。
+  2. posts 裡收錄自我介紹、電影心得及法律研究論文。
+  3. 一般文章的每個段落放在 paragraphs 裡的一組引號中。
+  4. 法律研究全文是獨立 HTML 網頁：externalUrl 指向同目錄的文章檔。
   注意：網站不會自動儲存修改；記得在 GitHub 儲存／提交變更。
 */
 window.GORDON_SITE = {
@@ -18,11 +19,26 @@ window.GORDON_SITE = {
     email: 'cjun095712@gmail.com' // 公開合作聯絡信箱
   },
   categories: [
-    {id: 'film', number: '01', en: 'FILM NOTES', name: '電影心得', description: '看完電影，繼續思考那些沒有標準答案的事。'},
-    {id: 'zhiwei', number: '02', en: 'ZHIWEI · 知微', name: '知微創作', description: '以文字留下觀察、感情與人生的細小片刻。'},
-    {id: 'life', number: '03', en: 'LIFE JOURNAL', name: '生活紀錄', description: '旅行、音樂、閱讀，與日常相遇的人事物。'}
+    {id: 'law', number: '01', en: 'LAW & TECHNOLOGY', name: '法律研究', description: '從法律規範與比較法出發，思考新興科技與制度如何回應社會問題。'},
+    {id: 'film', number: '02', en: 'FILM NOTES', name: '電影心得', description: '看完電影，繼續思考那些沒有標準答案的事。'},
+    {id: 'zhiwei', number: '03', en: 'ZHIWEI · 知微', name: '知微創作', description: '以文字留下觀察、感情與人生的細小片刻。'},
+    {id: 'life', number: '04', en: 'LIFE JOURNAL', name: '生活紀錄', description: '旅行、音樂、閱讀，與日常相遇的人事物。'}
   ],
   posts: [
+    {
+      slug: 'law-ai-medical-device-pccp',
+      category: 'law',
+      title: '愛（AI）護法器',
+      subtitle: '——醫療器材於智慧照護應用下相關法律議題研析：以人工智慧醫材軟體預定變更控制計畫為中心',
+      date: '2026.11.4',
+      author: '章竣 Gordon',
+      excerpt: '以臺灣、美國與歐盟為比較對象，聚焦人工智慧醫療器材軟體預定變更控制計畫（PCCP）的規範基礎、審查與上市後監督。',
+      coverImage: '',
+      coverCaption: '',
+      externalUrl: 'law-ai-medical-device-pccp.html',
+      paragraphs: [],
+      footnote: ''
+    },
     {
       slug: 'hello-im-gordon',
       category: 'about',
