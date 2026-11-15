@@ -1,0 +1,14 @@
+    {
+      slug: 'chronos',
+      category: 'zhiwei',
+      title: 'Chronos（Χρόνος）',
+      subtitle: '',
+      date: '2026.11.15',
+      author: '章竣 Gordon',
+      excerpt: '而我也終於發現，原來在那些以為自己仍然停留在過去的日子裡，時間早已帶著我，慢慢走到了這裡。',
+      coverImage: '',
+      coverCaption: '',
+      externalUrl: 'chronos.html',
+      paragraphs: [],
+      footnote: ''
+    },
