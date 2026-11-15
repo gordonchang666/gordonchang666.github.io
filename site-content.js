@@ -26,6 +26,20 @@ window.GORDON_SITE = {
   ],
   posts: [
     {
+      slug: 'chronos',
+      category: 'zhiwei',
+      title: 'Chronos（Χρόνος）',
+      subtitle: '',
+      date: '2026.11.15',
+      author: '章竣 Gordon',
+      excerpt: '或許，永遠年輕的不只有她。那個曾經認真、坦率地愛著她的我，也一同被真空封存在當年的那個剎那，永遠年輕。',
+      coverImage: '',
+      coverCaption: '',
+      externalUrl: 'chronos.html',
+      paragraphs: [],
+      footnote: ''
+    },
+    {
       "slug": "may-i-be-a-taiwan-flower",
       "category": "life",
       "title": "願我也能成為一朵臺灣花",
