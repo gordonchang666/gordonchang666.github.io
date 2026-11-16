@@ -1,0 +1,20 @@
+--- GitHub/index.html
++++ patch/index.html
+@@ -4,6 +4,8 @@
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="theme-color" content="#f5f1eb">
++  <meta name="referrer" content="no-referrer">
++  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+   <meta name="description" content="章竣 Gordon 的個人網站。法律、科技法、電影、文字、藝術與生活的記錄。">
+   <meta property="og:type" content="website">
+   <meta property="og:title" content="章竣 Gordon｜法律・文字・生活">
+@@ -11,7 +13,7 @@
+   <title>章竣 Gordon｜法律・文字・生活</title>
+   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+   <link rel="stylesheet" href="styles.css">
+-  <script src="site-content.js" defer></script>
++  <script src="site-content.js?v=20261116-b02f8834" defer></script>
+   <script src="main.js" defer></script>
+ </head>
+ <body>
