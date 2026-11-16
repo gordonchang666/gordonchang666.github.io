@@ -1,0 +1,39 @@
+GORDON BLOG — 靜態資訊安全檢查摘要 (2026-11-16)
+
+檢查範圍
+- 由 GitHub 讀取 main 分支的 index.html、main.js、styles.css、site-content.js。
+- 採用源碼靜態檢查、Node URL 安全守衛測試、Chromium CSP 測試。
+- 未成功連線到公開的 GitHub Pages 讀者端，因此未驗證 HTTP 回應標頭、GitHub Pages 實際部署狀態、
+  第三方 CDNs、GitHub 帳號設定或整站滲透測試；不宣稱網站無漏洞。
+
+已確認的安全現況
+- 網站為純靜態 HTML/CSS/JavaScript；上述檔案內未發現登入端點、資料庫或伺服器端輸入表單。
+- 既有 main.js 對文字欄位採 HTML 特殊字元跳脫，是可保留的 XSS 防禦。
+- 既有外部社群連結含 HTTPS 格式限制與 noreferrer/noopener 防護。
+- 當前 index.html 的 CSP 仍放行行內樣式 (unsafe-inline)，本補丁用精確 SHA-256 雜湊取代。
+- main.js 直接引用 editable site-content.js 的 externalUrl 及 coverImage，
+  雖然現存值沒有顯示危險協定，仍值得加入防禦性檢查。
+
+此次新增
+1. 嚴格 CSP：阻擋其他來源的 JS、表單送出、嵌入頁面、worker、物件外掛、主動網路連線；
+   限定現有動態分類 CSS 的雜湊。保留目前 CSS/SVG 與 HTTPS 圖片相容。
+2. 文章網址防護：允許同網站 HTTPS 的 HTML 文章檔案，阻擋 javascript:、站外跳轉與路徑穿越。
+3. 圖片網址防護：拒絕危險協定與模糊網址，僅接受普通 HTTPS 圖片連結。
+4. no-referrer：沿用既有網頁級 Referrer Policy。
+5. 可選 GitHub Actions 安全檢查：偵測腳本增減、CSP 弱化、語法錯誤與網站識別碼遺失。
+
+需要自行執行的管理防護
+- GitHub 2FA / passkey、避免公開存取金鑰，降低帳號入侵所造成的完整網站竄改風險。
+- GitHub Pages 透過 Settings → Pages 確認 HTTPS；若有自訂網域則檢查 DNS/TLS。
+- 若 GitHub 方案支援，為 main 設定 Ruleset、審核與必要狀態檢查。
+
+不可由本補丁達成的事項
+- 無法提供真正的伺服器 WAF/DDoS 防護、IP 速率限制、HSTS 或 frame-ancestors HTTP 回應標頭。
+- GitHub Pages 平台的限制不能透過額外放置 .htaccess 或 _headers 檔案解決。
+- 若攻擊者取得 GitHub 帳號的寫入權限並可改寫所有檔案，本補丁本身不能阻止這類事件。
+- 自動檢查只有在流程啟用且與 branch rules 配合時，才有可能成為強制性的發布門檻。
+
+資料保護
+- site-content.js、main.js、styles.css 原封不動、不在資料包內。
+- 修改後的 index.html 和當前 GitHub 原版相比，頁面 body、所有 href 和既有 title 均完全一致。
+- 原有兩篇獨立文章與〈相信自己一次〉七段內文在測試中保持不變。
