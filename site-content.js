@@ -25,7 +25,7 @@ window.GORDON_SITE = {
     {id: 'life', number: '04', en: 'LIFE JOURNAL', name: '生活紀錄', description: '旅行、音樂、閱讀，與日常相遇的人事物。'}
   ],
   posts: [
-        {
+    {
       "slug": "believe-in-myself-once",
       "category": "zhiwei",
       "title": "相信自己一次",
