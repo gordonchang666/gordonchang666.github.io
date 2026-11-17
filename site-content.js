@@ -26,6 +26,19 @@ window.GORDON_SITE = {
   ],
   posts: [
     {
+      slug: 'law-choice-of-court-agreements-2026',
+      category: 'law',
+      title: '涉外民商事合意管轄之意思自治與程序公平',
+      subtitle: '以最高法院103年度台抗字第571號民事裁定及2005年海牙選擇法院協議公約為中心',
+      date: '2026.11.17',
+      author: '章竣 Gordon',
+      excerpt: '從最高法院的排他性合意管轄裁定出發，比較海牙選擇法院協議公約，討論不對稱管轄條款、程序公平、意思自治與訴訟經濟。',
+      coverImage: '',
+      coverCaption: '',
+      externalUrl: 'law-choice-of-court-agreements-2026.html',
+      paragraphs: []
+    },
+    {
       "slug": "believe-in-myself-once",
       "category": "zhiwei",
       "title": "相信自己一次",
