@@ -26,6 +26,20 @@ window.GORDON_SITE = {
   ],
   posts: [
     {
+        "slug": "sakamoto-seeing-sound-hearing-time-20261118",
+        "category": "life",
+        "title": "坂本龍一：觀音·聽時",
+        "subtitle": "Ryuichi Sakamoto",
+        "date": "2026.11.18",
+        "author": "章竣 Gordon",
+        "excerpt": "從坂本龍一《觀音·聽時》的觀展體驗與塔爾科夫斯基的詩，思考生命中反覆出現的奇蹟、輪迴與相似的循環。",
+        "coverImage": "",
+        "coverCaption": "",
+        "externalUrl": "sakamoto-seeing-sound-hearing-time-20261118.html",
+        "paragraphs": [],
+        "footnote": ""
+    },
+    {
       "slug": "old-fox-ice-water-and-razor",
       "category": "film",
       "title": "一杯冰水，和一片刀片",
