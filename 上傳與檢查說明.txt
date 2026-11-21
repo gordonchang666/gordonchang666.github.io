@@ -1,0 +1,18 @@
+You gotta win it｜2026-11-21 修復版
+
+原因：原本文章放在額外 JavaScript 檔案；若瀏覽器載入的首頁或附加腳本為舊版本，就可能顯示「找不到這篇文章」。此版將新文章直接寫入主文章資料，減少多檔載入的不一致。
+
+本 ZIP 解壓縮後只需要上傳兩個檔案：
+1. site-content.js（已保留 GitHub 目前全部 11 篇文章，並新增 You gotta win it，合計 12 篇）
+2. index.html（只移除舊附加腳本載入，並更換主資料的快取版本）
+
+上傳方式：
+1. 開啟 https://github.com/gordonchang666/gordonchang666.github.io/upload/main
+2. 只上傳解壓後的 site-content.js 和 index.html，確認是同名取代。
+3. 按 Commit changes，等 GitHub Pages 部署完成。
+4. 用無痕視窗或新瀏覽器開啟：https://gordonchang666.github.io/?refresh=20261121-fix02#read/you-gotta-win-it-20261120
+
+不必刪除 GitHub 中的 post-you-gotta-win-it-20261120.js；新版首頁已不載入它。
+若公開頁面仍未更新：先看 GitHub Actions / Pages 是否部署成功，並用新分頁與無痕模式排除瀏覽器快取。
+
+注意：這份修復檔完全按照 2026-11-21 GitHub 儲存庫當時內容製作；若上傳前又修改了 site-content.js，請避免用舊修復包覆蓋新內容。
