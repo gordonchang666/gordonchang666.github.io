@@ -1,34 +1,59 @@
-《坂本龍一：觀音·聽時》｜GitHub 部落格上傳說明
-製作日期：2026-11-18
-儲存庫：https://github.com/gordonchang666/gordonchang666.github.io
-網站：https://gordonchang666.github.io/
-發表分類：生活紀錄
-文章網址（上傳並部署後）：https://gordonchang666.github.io/sakamoto-seeing-sound-hearing-time-20261118.html
+﻿舞臺之外，琴聲仍在｜部落格文章上傳資料夾
+==============================================
 
-【上傳步驟】
-1. 將 ZIP 解壓縮。
-2. 開啟解壓縮資料夾內的 UPLOAD_TO_GITHUB 子資料夾。
-3. 至 GitHub 儲存庫 main 分支的根目錄，點選 Add file → Upload files。
-4. 把 UPLOAD_TO_GITHUB 內的「兩個檔案」拖進 GitHub：
-   - site-content.js（更新既有文章清單：請選擇覆蓋同名舊檔案）
-   - sakamoto-seeing-sound-hearing-time-20261118.html（新增獨立文章頁面）
-   請注意：拖入的是「兩個檔案」，不是 ZIP 本身，也不是 UPLOAD_TO_GITHUB 整個資料夾。
-5. Commit changes 後，等待 GitHub Pages 顯示部署成功，即可由首頁「生活紀錄」找到新文章。
+文章：舞臺之外，琴聲仍在
+副標：——讀恩田陸《蜜蜂與遠雷》，談夢想、熱愛與人生的選擇
+日期：2026.11.24
+作者：章竣 Gordon
+分類：知微創作（zhiwei）
+永久識別 slug：stage-beyond-music-remains
 
-【保留舊檔案、安全性與相容性】
-- 此版本根據實際 GitHub main 分支上 site-content.js 的檔案 SHA：5d3343d559f4dfa8331553f6181017290ccee843 製作。
-- 只在 posts 陣列最前面新增一篇作品，原始文章資料、分類、個人介紹均原封不動保留。
-- 不更動 index.html、main.js、styles.css、security-guard.js 或既有其他 HTML、圖片及 PDF。
-- 如果在下載本 ZIP 後，你已在 GitHub 修改過 site-content.js，請勿直接以本檔覆蓋新版本，應先合併差異，避免覆蓋較新的改動。
-- 文章使用 UTF-8，繁體中文與俄文詩題均保留。頁面不依賴外部字體、圖片或 JavaScript。
-- 文章備份_坂本龍一_觀音聽時.md 只是備份，無須上傳 GitHub。
+一、這個壓縮包包含什麼？
 
-【著作權提醒】
-- 你提供的英文譯詩已按原文納入文章。詩作及其英文翻譯可能仍受著作權保護。
-- 公開上傳全文前，建議確認英文譯文的著作權歸屬與公開轉載授權；單純標註作者與演出來源，不必然構成轉載授權。
-- 若未取得授權，建議改成少量引句加上你自己的心得，並連結合法來源。
+1. site-content.js
+   這是以你先前保存在 ChatGPT 檔案庫的部落格 site-content(9).js（2026-11-17 版本）
+   為基礎，新增本篇文章的完整內容，原有文章沒有主動刪除或改寫。
 
-【驗證網址】
-首頁：https://gordonchang666.github.io/
-文章：https://gordonchang666.github.io/sakamoto-seeing-sound-hearing-time-20261118.html
-（上述連結須待你完成 GitHub 上傳及 GitHub Pages 部署後才會生效。）
+2. 安全更新用／新增文章片段_貼入posts清單.txt
+   只有這篇新文章的 JavaScript 物件，可加入目前最新網站檔案的 posts: [ ... ] 陣列。
+   如果你的 GitHub 已經比 2026-11-17 儲存版本更新，強烈建議使用這個方法。
+
+3. 安全更新用／文章資料.json
+   供日後備份或資料轉換。
+
+4. 文章原稿與預覽／
+   HTML：可用瀏覽器直接打開閱讀的單篇文章預覽頁。
+   MD：純 Markdown 文章。
+   TXT：純文字文章，適合複製到其他平台。
+
+二、如何上傳既有部落格？（推薦：不覆蓋其他文章）
+
+1. 進入 GitHub 網站儲存庫，打開目前正在使用的 site-content.js。
+2. 先備份該檔案；點選 Edit（編輯）。
+3. 找到 posts: [ 這一行，在 [ 之後新增一行，貼上
+   「安全更新用／新增文章片段_貼入posts清單.txt」的完整內容。
+4. 確認後面原有文章仍完整保留，且新文章與下一篇文章之間有逗號。
+5. 儲存提交（Commit changes），待 GitHub Pages 部署後刷新網站查看。
+
+三、快速替換方式（僅適用於目前網站與舊備份一致）
+
+如果你確認 GitHub 上目前的 site-content.js 還停留在 2026-11-17 保存的版本，
+可直接上傳此包內最上層的 site-content.js 替換原檔。
+
+注意：如果 GitHub 上新增過文章或修改過介紹文字，直接替換會覆蓋那些較新的內容。
+不確定是否一致時，務必使用第二節的「新增文章片段」方法。
+
+四、文章預覽與網頁顯示
+
+- HTML 檔可獨立開啟閱讀，但不是網站用來列出文章的資料來源。
+- 你的既有網站是使用 window.GORDON_SITE.posts 資料來顯示文章。
+- 要在既有網站文章列表看到新文章，必須把文章登錄到 site-content.js。
+- 預設分類是「知微創作」；若要放到「生活紀錄」，將 category 從 zhiwei 改為 life。
+- 此包不包含封面圖片，coverImage 留空，避免錯誤引用不存在的檔案。
+- 這個壓縮包尚未上傳或變更你的 GitHub 網站。
+
+五、文字核對
+
+- 本文五個段落照你 2026-11-24 提供的內容收錄，不自行刪減。
+- 副標題按先前確認的標題格式補齊了缺少的「》」。
+- 文章資料使用 UTF-8；TXT 和貼上片段使用 UTF-8 BOM 以便利部分編輯器辨識繁體中文。
